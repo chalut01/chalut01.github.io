@@ -5,18 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>แบบประเมินความสัมพันธ์ 20 ข้อ</title>
 <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; color: #333; margin: 0; padding: 20px; }
-    h1 { text-align: center; color: #4a90e2; }
-    form { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-width: 800px; margin: 0 auto; }
-    .question { margin-bottom: 25px; }
-    .question label { display: block; font-weight: bold; margin-bottom: 10px; }
-    .options { display: flex; justify-content: space-between; flex-wrap: wrap; }
-    .options label { background: #e7e7e7; padding: 10px 15px; border-radius: 8px; cursor: pointer; margin: 2px; flex: 1; text-align: center; transition: 0.2s; }
-    .options input[type="radio"] { display: none; }
-    .options input[type="radio"]:checked + span { background: #4a90e2; color: #fff; font-weight: bold; }
-    #submitBtn { display: block; margin: 30px auto; padding: 12px 25px; font-size: 16px; color: #fff; background: #4a90e2; border: none; border-radius: 8px; cursor: pointer; transition: 0.2s; }
-    #submitBtn:hover { background: #357ab8; }
-    #result { text-align: center; margin-top: 30px; font-size: 20px; font-weight: bold; padding: 20px; background: #e7f0ff; border-radius: 10px; }
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 700px; margin: auto; }
+    h1 { text-align: center; }
+    .question { margin-bottom: 20px; }
+    .options label { margin-right: 10px; }
+    #submitBtn { display: block; margin: 30px auto; padding: 10px 20px; font-size: 16px; }
+    #result { margin-top: 30px; font-size: 18px; font-weight: bold; }
 </style>
 </head>
 <body>
@@ -54,10 +48,10 @@ questions.forEach((q, i) => {
     div.className = "question";
     let optionsHTML = '<div class="options">';
     for(let j=1; j<=10; j++){
-        optionsHTML += `<label><input type="radio" name="q${i+1}" value="${j}"><span>${j}</span></label>`;
+        optionsHTML += `<label><input type="radio" name="q${i+1}" value="${j}">${j}</label>`;
     }
     optionsHTML += '</div>';
-    div.innerHTML = `<label>${i+1}. ${q}</label>${optionsHTML}`;
+    div.innerHTML = `<strong>${i+1}. ${q}</strong>${optionsHTML}`;
     form.appendChild(div);
 });
 </script>
@@ -72,7 +66,7 @@ document.getElementById('submitBtn').addEventListener('click', () => {
     const totalQuestions = 20;
     let total = 0;
     let answered = 0;
-    for(let i=1;i<=totalQuestions;i++){
+    for(let i=1; i<=totalQuestions; i++){
         const val = document.querySelector(`input[name=q${i}]:checked`);
         if(val){
             total += parseInt(val.value);
@@ -94,8 +88,6 @@ document.getElementById('submitBtn').addEventListener('click', () => {
 
     document.getElementById('result').innerHTML = 
         `คะแนนรวม: ${total}/${maxScore} (${percent}%)<br>${message}`;
-
-    document.getElementById('result').scrollIntoView({ behavior: "smooth" });
 });
 </script>
 </body>
