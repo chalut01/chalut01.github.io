@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>แบบประเมินความสัมพันธ์ 20 ข้อ</title>
+<title>แบบประเมินความสัมพันธ์</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -108,7 +108,7 @@
 </style>
 </head>
 <body>
-<h1>แบบประเมินความสัมพันธ์ 20 ข้อ</h1>
+<h1>แบบประเมินความสัมพันธ์</h1>
 <form id="relationshipForm">
 
 <script>
@@ -157,7 +157,7 @@ questions.forEach((q, i) => {
 
 <script>
 document.getElementById('submitBtn').addEventListener('click', () => {
-    const totalQuestions = 20;
+    const totalQuestions =  questions.length;
     let total = 0;
     let answered = 0;
     for(let i=1;i<=totalQuestions;i++){
@@ -175,11 +175,11 @@ document.getElementById('submitBtn').addEventListener('click', () => {
     const maxScore = totalQuestions * 10;
     const percent = ((total / maxScore) * 100).toFixed(1);
     let message = '';
-    if(total >= 160) {
+    if(total >= totalQuestions*8 ) {
     message = 'คะแนนสูง แสดงว่าความสัมพันธ์ค่อนข้างดีและมั่นคง คุณทั้งสองมีความเข้าใจกันดี รู้สึกปลอดภัย และสามารถสื่อสารกันได้อย่างราบรื่น เวลามีปัญหาก็สามารถแก้ไขด้วยกันได้ ควรไปต่อและรักษาความสัมพันธ์ให้น่ารักต่อไป';
-} else if(total >= 120) {
+} else if(total >= totalQuestions*6 ) {
     message = 'คะแนนกลาง แสดงว่าความสัมพันธ์ยังมีทั้งจุดดีและจุดที่ควรปรับปรุง คุณอาจพบความไม่ลงรอยบ้าง แต่ยังมีความเข้าใจและความผูกพัน ควรใช้เวลาในการพูดคุยและปรับตัวเพื่อพัฒนาความสัมพันธ์ให้มั่นคงขึ้น';
-} else if(total >= 80) {
+} else if(total >= totalQuestions*4) {
     message = 'คะแนนต่ำ แสดงว่าความสัมพันธ์เริ่มไม่สมดุล อาจมีปัญหาการสื่อสารหรือความเข้าใจผิดบ่อยครั้ง คุณควรพิจารณาอย่างรอบคอบว่าความสัมพันธ์นี้เหมาะสมหรือไม่ และควรคุยกันอย่างจริงจังเพื่อหาทางแก้ไข';
 } else {
     message = 'คะแนนต่ำมาก แสดงว่ามีความเสี่ยงสูงในความสัมพันธ์ อาจมีความไม่เข้าใจกันมาก ความไว้วางใจและความพึงพอใจอาจต่ำ ควรพิจารณาอย่างรอบคอบว่าควรเดินหน้าต่อหรือพอแค่นี้ และอาจต้องให้เวลาในการคิดทบทวนหรือปรึกษาคนใกล้ชิด';
